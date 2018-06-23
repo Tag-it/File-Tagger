@@ -24,7 +24,7 @@ class FileTag extends Component {
   handleSubmit(ev) {
     ev.preventDefault()
     console.log(this.state.newTag, "submit tag")
-    this.props.handleTagSubmit(this.state.newTag)
+    this.props.handleTagSubmit(this.props.info.id, this.state.newTag)
       
   }
 
@@ -37,8 +37,8 @@ class FileTag extends Component {
         <input name="tag" type="text" onChange={this.handleChange} />
         <button type="submit">Submit</button>
       </form>
-      <p>{this.props.tag}</p>
-      <img src={this.props.url} style={imgStyle} />
+      <p>{this.props.info.tags}</p>
+      <img src={this.props.info.url} style={imgStyle} />
     </div>
     )
   }

@@ -10,7 +10,7 @@ class Homepage extends React.Component {
       fileTagPage: false,
       url: '',
       id: '',
-      tag: [],
+      tags: [],
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -21,22 +21,20 @@ class Homepage extends React.Component {
     this.setState({ url: ev.target.value })
   }
 
-  handleTagSubmit(tag){
-    let newArray = this.state.tag.slice()
-    newArray.push(tag)
-    fetch('http://localhost:3000/image/' + this.state.id, {
+  handleTagSubmit(id, tag){
+    fetch('http://localhost:3000/image/' + id, {
       method: 'PUT',
       body: JSON.stringify({
-      tag: newArray,
+        tag: tag,
       }),
       headers: {
         'Content-Type': 'application/json'
       }
     }).then(data => data.json())
       .then(data => {
+        console.log('new ');
         this.setState({
-         tag: data.tag,
-          
+         tags: data.tags,
         })
       })
   }
@@ -56,13 +54,15 @@ class Homepage extends React.Component {
       }
     }).then(data => data.json())
       .then(data => {
-        console.log('home Handle Submit', data , this.state)
+        console.log('home Handle Submit', data)
+        console.log('home Handle Submit id', data._id)
         this.setState({
           id: data._id,
           url: data.imageURL,
-          tag: data.tags,
+          tags: data.tags,
           fileTagPage: true
         })
+        console.log('home handle submit state', this.state);
       })
   }
 
@@ -73,7 +73,7 @@ class Homepage extends React.Component {
       <h1> About this App </h1>
       <p> Have tons of images and need a way to organize them, Tag-It can help </p>
     </div>
-    {this.state.fileTagPage ? <FileTag url={this.state.url} tag={this.state.tag} handleTagSubmit={this.handleTagSubmit}/>
+    {this.state.fileTagPage ? <FileTag info={this.state} handleTagSubmit={this.handleTagSubmit}/>
     :
     <form onSubmit={this.handleSubmit}>
     <input name="url" type="text" onChange={this.handleChange}/>

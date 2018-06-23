@@ -15,8 +15,7 @@ app.post('/image', (req, res) => {
     
     let item = new Image({
         imageURL: req.body.imageURL,
-        comments: req.body.comment,
-        tags: req.body.tags,
+        tags: [],
     })
     Promise.all([item.save()])
     .then(() => {
@@ -50,12 +49,16 @@ app.get('/image/:tag', (req, res) => {
 })
 
 app.put('/image/:id', (req, res) => {
-    console.log(req.params)
-    console.log(req.body, 'req.body')
-    Image.findOneAndUpdate({_id:req.params.id}, req.body)
-    .then(data => {
-        console.log(data)
-        res.json(data);
+    console.log(req.params, req.params.id)
+    console.log(req.body, 'req.body', req.body.tag)
+    Image.findOne({_id: req.params.id}, (err, img) => {
+        console.log('img', img);
+        img.tags.push(req.body.tag);
+        img.save()
+        .then(img => {
+            console.log(img)
+            res.send(img);
+        })
     })
 })
 
