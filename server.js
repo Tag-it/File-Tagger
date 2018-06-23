@@ -30,6 +30,8 @@ app.get('/image', (req, res) => {
     .then(data => {res.json(data)})
 })
 
+app.delete('/image', (req, res))
+
 app.listen(PORT, () => {
     console.log('listening on Port: ', PORT);
 })
