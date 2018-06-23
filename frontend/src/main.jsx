@@ -21,13 +21,13 @@ class App extends React.Component {
           <nav>
           <ul>
           <li><Link to="/">Home Page</Link></li>
-          <li><Link to="/file-tag">File Tag</Link></li>
+          {/* <li><Link to="/file-tag">File Tag</Link></li> */}
           <li><Link to="/">Search</Link></li>
           <li><Link to="/about-us">About Us</Link></li>
           </ul>
           </nav>
           <Route exact path="/" component={HomePage} />
-          <Route exact path="/file-tag" component={FileTag} />
+          {/* <Route exact path="/file-tag" component={FileTag} /> */}
           {/*<Route exact path="/search" component={SearchPage} />*/}
           <Route exact path="/about-us" component={Aboutus} />
         </div>

@@ -19,9 +19,11 @@ app.post('/image', (req, res) => {
         tags: req.body.tags,
     })
     Promise.all([item.save()])
-    .then(img => {
-        console.log(img);
-        res.json(img);
+    .then(() => {
+        return Image.findOne({imageURL: req.body.imageURL});
+    })
+    .then(image => {
+        res.send(image);
     })
 })
 
