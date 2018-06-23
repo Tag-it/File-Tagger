@@ -9,13 +9,36 @@ class Homepage extends React.Component {
     this.state = {
       fileTagPage: false,
       url: '',
+      id: '',
+      tag: [],
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleTagSubmit = this.handleTagSubmit.bind(this)
   }
 
   handleChange(ev) {
     this.setState({ url: ev.target.value })
+  }
+
+  handleTagSubmit(tag){
+    let newArray = this.state.tag.slice()
+    newArray.push(tag)
+    fetch('http://localhost:3000/image/' + this.state.id, {
+      method: 'PUT',
+      body: JSON.stringify({
+      tag: newArray,
+      }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).then(data => data.json())
+      .then(data => {
+        this.setState({
+         tag: data.tag,
+          
+        })
+      })
   }
 
   handleSubmit(ev) {
@@ -33,8 +56,11 @@ class Homepage extends React.Component {
       }
     }).then(data => data.json())
       .then(data => {
+        console.log('home Handle Submit', data , this.state)
         this.setState({
+          id: data._id,
           url: data.imageURL,
+          tag: data.tags,
           fileTagPage: true
         })
       })
@@ -47,7 +73,7 @@ class Homepage extends React.Component {
       <h1> About this App </h1>
       <p> Have tons of images and need a way to organize them, Tag-It can help </p>
     </div>
-    {this.state.fileTagPage ? <FileTag url={this.state.url}/>
+    {this.state.fileTagPage ? <FileTag url={this.state.url} tag={this.state.tag} handleTagSubmit={this.handleTagSubmit}/>
     :
     <form onSubmit={this.handleSubmit}>
     <input name="url" type="text" onChange={this.handleChange}/>
