@@ -25,6 +25,11 @@ app.post('/image', (req, res) => {
     })
 })
 
+app.get('/image', (req, res) => {
+    Image.find({})
+    .then(data => {res.json(data)})
+})
+
 app.listen(PORT, () => {
     console.log('listening on Port: ', PORT);
 })
