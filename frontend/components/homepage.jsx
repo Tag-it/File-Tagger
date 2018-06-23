@@ -18,6 +18,20 @@ class Homepage extends React.Component {
   handleSubmit(ev) {
     ev.preventDefault()
     console.log(this.state)
+        fetch('http://localhost:3000/image', {
+        method: 'POST',
+        body: JSON.stringify({
+            imageURL: this.state.url,
+            comment: '',
+            tags: []
+        }),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }).then(data => data.json())
+        .then(data => {
+            console.log(data)
+        })
   }
   
   render() {
