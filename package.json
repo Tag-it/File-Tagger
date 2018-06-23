@@ -6,8 +6,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "webpack-dev-server --hot --inline --history-api-fallback"
-  
-  
   },
   "repository": {
     "type": "git",
@@ -34,6 +32,7 @@
     "mongoose": "^5.1.6",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
+    "react-router-dom": "^4.3.1",
     "sass-loader": "^7.0.3",
     "style-loader": "^0.21.0",
     "webpack": "^4.12.0",
