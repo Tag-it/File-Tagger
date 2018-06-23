@@ -2,6 +2,18 @@
 
 let button = document.getElementById('button');
 let getAll = document.getElementById('getall');
+let delimage = document.getElementById('delete')
+
+delimage.addEventListener('click', (ev) => {
+    console.log('delete was fired')
+    fetch('http://localhost:3000/image/5b2d8fcc1dea8607d7f44260', {method:'DELETE', 
+    headers:{
+        'Content-Type':'application/json'
+    }})
+    .then(data => data.json())
+    .then(data => console.log(data))
+})
+
 getAll.addEventListener('click', (ev) =>{
     console.log('get all was fired')
     fetch('http://localhost:3000/image')

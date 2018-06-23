@@ -30,7 +30,11 @@ app.get('/image', (req, res) => {
     .then(data => {res.json(data)})
 })
 
-app.delete('/image', (req, res))
+app.delete('/image/:id', (req, res) => {
+    console.log(req.params)
+    Image.deleteOne({_id:req.params.id})
+    .then(data => res.json('delete successful'))
+}) 
 
 app.listen(PORT, () => {
     console.log('listening on Port: ', PORT);
