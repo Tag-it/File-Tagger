@@ -1,0 +1,93 @@
+h3 {
+    width: 150px;
+    text-align: center;
+    margin-top: 5%;
+    border-radius: 10px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 22px;
+    background-color: #804D00;
+    color: white;
+    margin-bottom: 20px;
+  }
+  
+  #about-us {
+  position: absolute;
+  left:10%;
+  width: 35%;
+  height: 300px;
+  margin-top: 60px;
+  padding-left: 15px;
+  }
+  
+  .ronnieImage {
+    float: left;
+    border-radius: 20px;
+    border: 2px solid black;
+    margin-right: 15px;
+    margin-top: 15px;
+  }
+  /*#billIntroduction {
+    float: right;
+  }*/
+  .ronnieIntroduction {
+    margin-top: 40px;
+    text-align: justify;
+    /*text-justify: inter-word;*/
+    }
+  
+  .ronnieProjectComments {
+    text-align: justify;
+    /*text-justify: inter-word;*/
+    padding-bottom: 15px;
+  }
+  
+  .fredImage {
+    float: left;
+    border-radius: 20px;
+    border: 2px solid black;
+    margin-right: 15px;
+  
+  }
+
+  .fredIntroduction {
+    text-align: justify;
+    text-justify: inter-word;
+  }
+  
+  .fredProjectComments {
+    text-align: justify;
+    text-justify: inter-word;
+  }
+
+  
+  .mitchImage {
+    float: left;
+    border-radius: 20px;
+    border: 2px solid black;
+    margin-right: 15px;
+  
+  }
+  .mitchIntroduction {
+    text-align: justify;
+    text-justify: inter-word;
+  }
+  
+  .mitchProjectComments {
+    text-align: justify;
+    text-justify: inter-word;
+  }
+  .mitchGitHubLink {
+    text-align: left;
+    font-weight: bolder;
+    padding-bottom: 5px;
+  }
+
+  .fredGitHubLink {
+    text-align: left;
+    font-weight: bolder;
+    padding-bottom: 5px;
+  }
+  .ronnieGitHubLink {
+    text-align: left;
+    font-weight: bolder;
+    }
